@@ -1,5 +1,6 @@
 float [] x = new float [4];
 float [] y = new float [4];
+int count;
 
 void setup() 
 {
@@ -24,17 +25,21 @@ void setup()
       csv[i][j]=temp[j];
     }
   }
-  for(int i = 0; i < x.length; i++)
+  for (int i = 1; i < x.length; i++)
   {
-    x[i] = Float.valueOf(csv[i][0]).floatValue();
-    y[i] = Float.valueOf(csv[i][1]).floatValue();
-  }
-  quad(x[0], y[0], x[1], y[1], x[2], y[2], x[3], y[3]);
-
-  
+    x[i] = Float.valueOf(csv[i][1]).floatValue();
+    y[i] = Float.valueOf(csv[i][2]).floatValue();
+  } 
+  count = Integer.valueOf(csv[0][0]).intValue();
   //test
-  println(csv[0][0]);
+  println(count);
 }
 
-void draw(){
+void draw() { 
+  if (frameCount == count) {
+  //quad(x[0], y[0], x[1], y[1], x[2], y[2], x[3], y[3]);
+  rect(x[0], y[0], x[1], y[1]);
   }
+}
+
+
